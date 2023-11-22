@@ -3,11 +3,17 @@
 #include <stdlib.h>
 #include "main.h"
 
+/**
+ *
+ */
 void print_character(char letter)
 {
 	write(STDOUT_FILENO, &letter, 1);
 }
 
+/**
+ *
+ */
 void print_string(char *str)
 {
 	int len = 0;
@@ -24,6 +30,9 @@ void print_string(char *str)
 	write(STDOUT_FILENO, str, len);
 }
 
+/**
+ *
+ */
 void print_percent(char percent)
 {
 	(void) percent;
