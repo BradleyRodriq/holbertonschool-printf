@@ -21,6 +21,12 @@ int _strlen(char *s)
         return (i);
 }
 
+/**
+ * _printf - produce output according to a format
+ * @format: the type of output
+ * @...: the number of arguments
+ * Return: always 0
+ */
 int _printf(const char *format, ...)
 {
         va_list args;
