@@ -19,7 +19,6 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format != '\0')
 			{
 				if (*format == 'c')
 				{
