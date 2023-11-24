@@ -53,7 +53,8 @@ int _printf(const char *format, ...)
 			}
 			format++;
 		}
-		va_end(arguments);
-		return (count);
 	}
+	va_end(arguments);
+	return (count);
 }
+
