@@ -11,25 +11,6 @@ void print_character(char letter)
 	write(STDOUT_FILENO, &letter, 1);
 }
 
-/**
- *_strlen - prints the length of a string
- *@s: string to be counted
- *Return: length of string
- */
-int _strlen(char *s)
-
-
-{
-	int i = 0;
-
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-/**
- *
- */
 void print_string(char *str)
 {
 	int len = 0;
@@ -53,4 +34,10 @@ void print_percent(char percent)
 {
 	(void) percent;
 	write(STDOUT_FILENO, "%", 1);
+}
+
+void print_empty(char *empty)
+{
+	(void) empty;
+	write(STDOUT_FILENO, "", 0);
 }
