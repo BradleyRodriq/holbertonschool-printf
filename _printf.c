@@ -19,41 +19,38 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+			if (*format == 'c')
 			{
-				if (*format == 'c')
-				{
-					print_character(va_arg(arguments,int));
-					count ++;
-				}
-				else if (*format == 's')
-				{
-					char *str;
+				print_character(va_arg(arguments,int));
+				count ++;
+			}
+			else if (*format == 's')
+			{
+				char *str;
 
-					str = va_arg(arguments, char *);
-					print_string(str);
-					count += _strlen(str);
-				}
-				else if (*format == '%')
-				{
-					print_percent('%');
-					count++;
-				}
-				else
-				{
-					write(STDOUT_FILENO, "%", 1);
-					write(STDOUT_FILENO, format, 1);
-					count += 2;
-				}
+				str = va_arg(arguments, char *);
+				print_string(str);
+				count += _strlen(str);
+			}
+			else if (*format == '%')
+			{
+				print_percent('%');
+				count++;
 			}
 			else
 			{
+				write(STDOUT_FILENO, "%", 1);
 				write(STDOUT_FILENO, format, 1);
-				count++;
+				count += 2;
 			}
-			format++;
 		}
+		else
+		{
+			write(STDOUT_FILENO, format, 1);
+			count++;
+		}
+		format++;
 	}
 	va_end(arguments);
 	return (count);
 }
-
