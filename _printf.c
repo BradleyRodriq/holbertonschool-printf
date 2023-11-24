@@ -36,9 +36,9 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				write(STDOUT_FILENO, "?", 1);
+				write(STDOUT_FILENO, "%", 1);
 				write(STDOUT_FILENO, format, 1);
-				count = 2;
+				count += 2;
 			}
 		}
 		else
