@@ -37,6 +37,7 @@ void print_string(char *str)
 	if (str == NULL)
 	{
 		write(STDOUT_FILENO, "(null)", 6);
+		return;
 	}
 	while (str[len] != '\0')
 	{

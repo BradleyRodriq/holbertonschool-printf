@@ -26,9 +26,11 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 's')
 			{
-				char *str;
-
-				str = va_arg(arguments, char *);
+				char *str = va_arg(arguments, char *);
+				if (str == NULL)
+				{
+					str = "(null)";
+				}
 				print_string(str);
 				count += _strlen(str);
 			}
