@@ -1,58 +1,28 @@
+#include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
-#include "main.h"
 
 /**
- *
+ * _printf - print formatted output
+ * @format: the format specifier
+ * Return: The number of characters printed, or -1 if its an error
  */
-
 int _printf(const char *format, ...)
-
 {
 	int count = 0;
-
 	va_list arguments;
-	va_start(arguments, format);
 
+	va_start(arguments, format);
 	if (format == NULL)
-	{
 		return (-1);
-	}
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
 			if (*format == '\0')
-			{
 				return (-1);
-			}
-			else if (*format == 'c')
-			{
-				print_character(va_arg(arguments,int));
-				count ++;
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(arguments, char *);
-				if (str == NULL)
-				{
-					str = "(null)";
-				}
-				print_string(str);
-				count += _strlen(str);
-			}
-			else if (*format == '%')
-			{
-				print_percent('%');
-				count++;
-			}
-			else
-			{
-				write(STDOUT_FILENO, "%", 1);
-				write(STDOUT_FILENO, format, 1);
-				count += 2;
-			}
+			count = format_specifier((char *)format, arguments, &count);
 		}
 		else
 		{
