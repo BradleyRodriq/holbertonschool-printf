@@ -20,14 +20,14 @@ int _printf(const char *format, ...)
 	}
 	while (*format != '\0')
 	{
-		if (*format == '%');
+		if (*format == '%')
 		{
-			format++
+			format++;
 			if (*format == '\0')
 			{
 				return (-1);
 			}
-			if (*format == 'c')
+			else if (*format == 'c')
 			{
 				print_character(va_arg(arguments,int));
 				count ++;
