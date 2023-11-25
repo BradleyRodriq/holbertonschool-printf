@@ -22,7 +22,11 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			format++;
+			format++
+			if (*format == '\0')
+			{
+				return (-1);
+			}
 			if (*format == 'c')
 			{
 				print_character(va_arg(arguments,int));
