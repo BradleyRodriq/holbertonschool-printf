@@ -1,7 +1,5 @@
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -16,37 +14,40 @@ int _printf(const char *format, ...)
 	va_list arguments;
 	va_start(arguments, format);
 
+	if (format == NULL)
+	{
+		return (-1);
+	}
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-			if (*format != '\0')
+			if (*format == 'c')
 			{
-				if (*format == 'c')
+				print_character(va_arg(arguments,int));
+				count ++;
+			}
+			else if (*format == 's')
+			{
+				char *str = va_arg(arguments, char *);
+				if (str == NULL)
 				{
-					print_character(va_arg(arguments,int));
-					count ++;
+					str = "(null)";
 				}
-				else if (*format == 's')
-				{
-					char *str;
-
-					str = va_arg(arguments, char *);
-					print_string(str);
-					count += _strlen(str);
-				}
-				else if (*format == '%')
-				{
-					print_percent('%');
-					count++;
-				}
-				else
-				{
-					write(STDOUT_FILENO, "%", 1);
-					write(STDOUT_FILENO, format, 1);
-					count += 2;
-				}
+				print_string(str);
+				count += _strlen(str);
+			}
+			else if (*format == '%')
+			{
+				print_percent('%');
+				count++;
+			}
+			else
+			{
+				write(STDOUT_FILENO, "%", 1);
+				write(STDOUT_FILENO, format, 1);
+				count += 2;
 			}
 		}
 		else
