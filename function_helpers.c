@@ -4,7 +4,8 @@
 #include "main.h"
 
 /**
- *
+ * print_character - prints a character
+ * @letter: the character to print
  */
 void print_character(char letter)
 {
@@ -28,7 +29,9 @@ int _strlen(char *s)
 }
 
 /**
- *
+ * print_string - prints a string
+ * @str: the string to be printed
+ * Return: always 0
  */
 void print_string(char *str)
 {
@@ -47,10 +50,24 @@ void print_string(char *str)
 }
 
 /**
- *
+ * print_percent - prints a percent sign
+ * @percent: the percent sign
  */
 void print_percent(char percent)
 {
 	(void) percent;
 	write(STDOUT_FILENO, "%", 1);
+}
+
+/**
+ * default_case - handles default case when character is not a format specifier
+ * @format: the default case
+ * Return: number of characters written
+ */
+
+int default_case(const char *format)
+{
+	write(STDOUT_FILENO, "%", 1);
+	write(STDOUT_FILENO, format, 1);
+	return (2);
 }
