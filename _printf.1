@@ -1,12 +1,65 @@
-.TH _printf 1 "November 2023" "_printf"
-.SH _printf
-_printf \- prints content based on format specifiers
+.TH printf "November 26, 2023" "v1.0" "_PRINTF MANUAL"
+
+.SH NAME
+_printf - format and print data
 
 .SH SYNOPSIS
-.B _printf [%format][argument]
-.I print character %c
-   print string %s
-   print percentage sign %%
+.B #include <stdio.h>
+.br
+.B #include <stdarg.h>
+.br
+.B #include <unistd.h>
+.br
+.B #include "main.h"
+.br
+.I int _printf(const char *format, ...);
 
 .SH DESCRIPTION
-   prints content based on format specifiers
+The
+.B _printf
+function formats and prints data according to the specified format.
+.P
+The format string can contain conversion specifiers that begin with '%'
+and are followed by a character that determines the type of conversion.
+
+.SH OPTIONS
+.TP
+.B %c
+Prints a character.
+.TP
+.B %s
+Prints a string.
+.TP
+.B %%
+Prints a percent sign.
+.TP
+.B %i, %d
+Prints integers.
+
+.SH RETURN VALUE
+Returns the number of characters printed (excluding the null byte used to
+end output to strings). If an output error is encountered, the function returns -1.
+
+.SH EXAMPLES
+The following examples demonstrate the usage of
+.B _printf:
+
+.B _printf("%c", 'A');
+
+.B _printf("%s", "Hello, World!");
+
+.B _printf("%%");
+
+.B _printf("%i", 5);
+
+.B _printf("%d", 42);
+
+.SH AUTHOR
+Written by Bradley Rodriguez & Leomar Rodriguez Gonzalez.
+
+.SH REPORTING BUGS
+Report any bugs or issues to bradley.rodriguez22@yahoo.com or leomarrg@gmail.com.
+
+.SH COPYRIGHT
+Copyright (C) 2023 Bradley Rodriguez & Leomar Rodriguez Gonzalez.
+This is free software; see the source code for copying conditions.
