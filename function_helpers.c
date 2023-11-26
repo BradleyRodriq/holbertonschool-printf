@@ -57,37 +57,40 @@ int print_percent(va_list arg)
 /**
  * print_integers
  *
-*/
-#include <unistd.h>
+ */
 
 int print_integers(va_list arg)
 {
 	int num, i;
-    char buffer[20];
-    int index;
+	char buffer[20];
+	int index;
+	int count;
 
 	num = va_arg(arg, int);
 	index = 0;
 	i = 0;
+	count = 0;
 
-    if (num < 0) {
-        write(STDOUT_FILENO, "-", 1);
-        num = -num;
-    }
-
-    if (num == 0) {
-        write(STDOUT_FILENO, "0", 1);
-        return 1;
-    }
-
-    while (num > 0) {
-        buffer[index++] = '0' + num % 10;
-        num /= 10;
-    }
-
-    for (i = index - 1; i >= 0; i--) {
-        write(STDOUT_FILENO, &buffer[i], 1);
-    }
-
-    return index;
+	if (num < 0)
+	{
+		write(STDOUT_FILENO, "-", 1);
+		num = -num;
+		count++;
+	}
+	if (num == 0)
+	{
+		write(STDOUT_FILENO, "0", 1);
+		count++;
+		return (count);
+	}
+	while (num > 0)
+	{
+		buffer[index++] = '0' + num % 10;
+		num /= 10;
+	}
+	for (i = index - 1; i >= 0; i--) {
+		write(STDOUT_FILENO, &buffer[i], 1);
+		count++;
+	}
+	return (count);
 }
