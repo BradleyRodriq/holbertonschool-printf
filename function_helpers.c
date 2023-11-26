@@ -30,7 +30,7 @@ int print_string(va_list arg)
 	if (str == NULL)
 	{
 		write(STDOUT_FILENO, "(null)", 6);
-		return (0);
+		return (6);
 	}
 	while (str[len] != '\0')
 	{
