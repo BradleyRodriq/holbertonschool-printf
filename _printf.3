@@ -1,0 +1,67 @@
+.TH _PRINTF 3 "November 26, 2023" "Version 1.0" "User Commands"
+
+.SH NAME
+_printf \- custom printf function
+
+.SH SYNOPSIS
+.B #include <main.h>
+
+.B int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+The \fB_printf\fP function formats and prints data to the standard output according to the format string \fIformat\fP.
+
+.SH OPTIONS
+The \fB_printf\fP function supports the following format specifiers:
+
+.TP
+.B \%d, \%i
+Prints an integer.
+
+.TP
+.B \%s
+Prints a string.
+
+.TP
+.B \%c
+Prints a character.
+
+.TP
+.B \%%
+Prints a percentage sign
+
+.SH RETURN VALUE
+The \fB_printf\fP function returns the number of characters printed ( not including null terminator).
+
+.SH EXAMPLES
+Print an integer:
+.PP
+.B _printf("The answer is: \%d\n", 42);
+
+Print a string:
+.PP
+.B _printf("Hello, \%s!\n", "world");
+
+Print a character:
+.PP
+.B _printf("a character: \%c\n", "A");
+
+Print a percentage sign:
+.PP
+.B _printf("a percentage sign: \%%\n", "%");
+
+.SH SEE ALSO
+.BR _printf (3)
+
+.SH AUTHOR
+Bradley Rodriguez bradley.rodriguez2@yahoo.com
+Leomar Rodriguez <leomar.email>
+
+.SH COPYRIGHT
+Copyright (c) 2023. All rights reserved.
+
+.SH BUGS
+Report bugs to bradley.rodriguez2@yahoo.com
+
+.SH VERSION
+1.0
