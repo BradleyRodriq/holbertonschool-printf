@@ -7,17 +7,19 @@
 /**
  *
  */
-void print_character(va_list arg)
+int print_character(va_list arg)
 {
 	char letter;
 
 	letter = va_arg(arg, int);
 	write(STDOUT_FILENO, &letter, 1);
+
+	return (1);
 }
 /**
  *
  */
-void print_string(va_list arg)
+int print_string(va_list arg)
 {
 	char *str;
 	int len;
@@ -28,20 +30,23 @@ void print_string(va_list arg)
 	if (str == NULL)
 	{
 		write(STDOUT_FILENO, "(null)", 6);
+		return (6);
 	}
-	else
+	while (str[len] != '\0')
 	{
-		len = _strlen(str);
-		write(STDOUT_FILENO, str, len);
+		len++;
 	}
+	write(STDOUT_FILENO, str, len);
+	return len;
 }
 /**
  *
  */
-void print_percent(va_list arg)
+int print_percent(va_list arg)
 {
 	(void) arg;
 	write(STDOUT_FILENO, "%", 1);
+	return (1);
 }
 
 /**
