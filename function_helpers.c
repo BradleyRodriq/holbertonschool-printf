@@ -54,16 +54,40 @@ int print_percent(va_list arg)
 	write(STDOUT_FILENO, "%", 1);
 	return (1);
 }
-
 /**
- * default_case - handles default case when character is not a format specifier
- * @format: the default case
- * Return: number of characters written
- */
+ * print_integers
+ *
+*/
+#include <unistd.h>
 
-int default_case(const char *format)
+int print_integers(va_list arg)
 {
-	write(STDOUT_FILENO, "%", 1);
-	write(STDOUT_FILENO, format, 1);
-	return (2);
+	int num, i;
+    char buffer[20];
+    int index;
+
+	num = va_arg(arg, int);
+	index = 0;
+	i = 0;
+
+    if (num < 0) {
+        write(STDOUT_FILENO, "-", 1);
+        num = -num;
+    }
+
+    if (num == 0) {
+        write(STDOUT_FILENO, "0", 1);
+        return 1;
+    }
+
+    while (num > 0) {
+        buffer[index++] = '0' + num % 10;
+        num /= 10;
+    }
+
+    for (i = index - 1; i >= 0; i--) {
+        write(STDOUT_FILENO, &buffer[i], 1);
+    }
+
+    return index;
 }
