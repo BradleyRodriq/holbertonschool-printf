@@ -73,7 +73,8 @@ int print_integers(va_list arg)
 
 	if (num == INT_MIN)
 	{
-		num = -INT_MAX;
+		write(STDOUT_FILENO, "-2147483648", 11);
+		return (11);
 	}
 	if (num < 0)
 	{
