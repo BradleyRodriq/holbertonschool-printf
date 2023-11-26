@@ -1,4 +1,5 @@
 #include <stdarg.h>
+#include <stdio.h>
 #include <unistd.h>
 #include "main.h"
 /**
@@ -12,9 +13,9 @@ int _printf(const char *format, ...)
 	int count, j;
 	va_list args;
 	printf_t types[] = {
-		{'c', print_character},
-		{'s', print_string},
-		{'%', print_percent},
+		{"c", print_character},
+		{"s", print_string},
+		{"%", print_percent},
 	};
 	va_start(args, format);
 	count = 0;
@@ -26,18 +27,17 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				break;
 			j = 0;
-			while (j < 3 && *format != (types[j].charType))
+			while (j < 3 && *format != *(types[j].charType))
 				j++;
 			if (j < 3)
 			{
-				types[j].print(args);
-				count++;
+				count += types[j].print(args);
 			}
 			else
 			{
 				write(STDOUT_FILENO, "%", 1);
 				write(STDOUT_FILENO, format, 1);
-				count += 2;
+				count++;
 			}
 		}
 		else
@@ -50,7 +50,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-
-
-
