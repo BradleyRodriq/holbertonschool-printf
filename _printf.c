@@ -11,17 +11,13 @@ int _printf(const char *format, ...)
 {
 	int count, j;
 	va_list args;
-	printf_t types[] = {
-		{"c", print_character},
-		{"s", print_string},
+	printf_t types[] = {{"c", print_character}, {"s", print_string},
 		{"%", print_percent},
 	};
 	va_start(args, format);
 	count = 0;
-
-		if (format == NULL)
-			return (-1);
-
+	if (format == NULL)
+		return (-1);
 	while (*format != '\0')
 	{
 		if (*format == '%')
