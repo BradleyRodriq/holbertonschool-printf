@@ -45,7 +45,6 @@ int print_string(va_list arg)
 int print_percent(va_list arg)
 {
 	(void) arg;
-	printf("Percent:");
 	write(STDOUT_FILENO, "%", 1);
 	return (1);
 }
