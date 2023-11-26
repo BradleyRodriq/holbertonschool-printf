@@ -71,8 +71,9 @@ int print_integers(va_list arg)
 	i = 0;
 
     if (num < 0) {
-        write(STDOUT_FILENO, "-", 1);
-        num = -num;
+		write(STDOUT_FILENO, "-", 2);
+		num = -num;
+		index++;
     }
 
     if (num == 0) {
