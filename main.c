@@ -9,6 +9,7 @@
  */
 int main(void)
 {
+
 	int len, len2;
 
 	len = _printf(NULL);
