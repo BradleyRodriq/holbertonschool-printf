@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	int count, j;
 	va_list args;
 	printf_t types[] = {{"c", print_character}, {"s", print_string},
-		{"%", print_percent},
+		{"%", print_percent}, {"i", print_integers}, {"d", print_integers},
 	};
 	va_start(args, format);
 	count = 0;
@@ -26,9 +26,9 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				return (-1);
 			j = 0;
-			while (j < 3 && *format != *(types[j].charType))
+			while (j < 5 && *format != *(types[j].charType))
 				j++;
-			if (j < 3)
+			if (j < 5)
 			{
 				count += types[j].print(args);
 			}
