@@ -55,8 +55,9 @@ int print_percent(va_list arg)
 	return (1);
 }
 /**
- * print_integers
- *
+ * print_integers - prints integers
+ * @arg: argument received from printf
+ * Return: the amount of integers printed
  */
 
 int print_integers(va_list arg)
@@ -93,7 +94,8 @@ int print_integers(va_list arg)
 		buffer[index++] = '0' + num % 10;
 		num /= 10;
 	}
-	for (i = index - 1; i >= 0; i--) {
+	for (i = index - 1; i >= 0; i--)
+	{
 		write(STDOUT_FILENO, &buffer[i], 1);
 		count++;
 	}
