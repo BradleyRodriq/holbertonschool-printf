@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include "main.h"
-
+#include <limits.h>
 /**
  * print_character - prints a char
  * @arg: arguments received from printf
@@ -62,7 +62,7 @@ int print_percent(va_list arg)
 int print_integers(va_list arg)
 {
 	int num, i;
-	char buffer[20];
+	char buffer[100];
 	int index;
 	int count;
 
@@ -71,6 +71,10 @@ int print_integers(va_list arg)
 	i = 0;
 	count = 0;
 
+	if (num == INT_MIN)
+	{
+		num = -INT_MAX;
+	}
 	if (num < 0)
 	{
 		write(STDOUT_FILENO, "-", 1);
