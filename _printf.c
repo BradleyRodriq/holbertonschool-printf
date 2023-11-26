@@ -5,7 +5,6 @@
 /**
  * _printf - prints output according to format
  * @format: the format specifier
- * @...: the output to print
  * Return: the number of characters printed, or -1 if NULL format or output
  */
 int _printf(const char *format, ...)
@@ -19,7 +18,6 @@ int _printf(const char *format, ...)
 	};
 	va_start(args, format);
 	count = 0;
-
 	if (*format == '\0')
 		return (-1);
 	while (*format != '\0')
@@ -27,8 +25,6 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '\0')
-				break;
 			j = 0;
 			while (j < 3 && *format != *(types[j].charType))
 				j++;
@@ -50,6 +46,5 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
-	va_end(args);
-	return (count);
+	va_end(args); return (count);
 }
