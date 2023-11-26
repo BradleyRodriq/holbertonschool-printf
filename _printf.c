@@ -1,53 +1,43 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include "main.h"
-
 /**
  * _printf - prints output according to format
  * @format: the format specifier
  * @...: the output to print
  * Return: the number of characters printed, or -1 if NULL format or output
  */
-
 int _printf(const char *format, ...)
-
 {
-	int count = 0;
-	va_list arguments;
-
-	va_start(arguments, format);
-	if (format == NULL)
-		return (-1);
-
+	int count, j;
+	va_list args;
+	printf_t types[] = {
+		{'c', print_character},
+		{'s', print_string},
+		{'%', print_percent},
+	};
+	va_start(args, format);
+	count = 0;
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
 			if (*format == '\0')
-				return (-1);
-			else if (*format == 'c')
+				break;
+			j = 0;
+			while (j < 3 && *format != (types[j].charType))
+				j++;
+			if (j < 3)
 			{
-				print_character(va_arg(arguments, int));
-				count++;
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(arguments, char *);
-
-				if (str == NULL)
-					str = "(null)";
-				print_string(str);
-				count += _strlen(str);
-			}
-			else if (*format == '%')
-			{
-				print_percent('%');
+				types[j].print(args);
 				count++;
 			}
 			else
 			{
-				count += default_case(format);
+				write(STDOUT_FILENO, "%", 1);
+				write(STDOUT_FILENO, format, 1);
+				count += 2;
 			}
 		}
 		else
@@ -57,6 +47,10 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
-	va_end(arguments);
+	va_end(args);
 	return (count);
 }
+
+
+
+

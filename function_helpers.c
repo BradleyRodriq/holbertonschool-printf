@@ -1,61 +1,46 @@
 #include <unistd.h>
+#include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include "main.h"
 
 /**
- * print_character - prints a character
- * @letter: the character to print
+ *
  */
-void print_character(char letter)
+void print_character(va_list arg)
 {
+	char letter;
+
+	letter = va_arg(arg, int);
 	write(STDOUT_FILENO, &letter, 1);
 }
-
 /**
- *_strlen - prints the length of a string
- *@s: string to be counted
- *Return: length of string
+ *
  */
-int _strlen(char *s)
-
-
+void print_string(va_list arg)
 {
-	int i = 0;
+	char *str;
+	int len;
 
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-/**
- * print_string - prints a string
- * @str: the string to be printed
- * Return: always 0
- */
-void print_string(char *str)
-{
-	int len = 0;
+	len = 0;
+	str = va_arg(arg, char *);
 
 	if (str == NULL)
 	{
 		write(STDOUT_FILENO, "(null)", 6);
-		return;
 	}
-	while (str[len] != '\0')
+	else
 	{
-		len++;
+		len = _strlen(str);
+		write(STDOUT_FILENO, str, len);
 	}
-	write(STDOUT_FILENO, str, len);
 }
-
 /**
- * print_percent - prints a percent sign
- * @percent: the percent sign
+ *
  */
-void print_percent(char percent)
+void print_percent(va_list arg)
 {
-	(void) percent;
+	(void) arg;
 	write(STDOUT_FILENO, "%", 1);
 }
 
