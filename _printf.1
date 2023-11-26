@@ -36,19 +36,19 @@ The \fB_printf\fP function returns the number of characters printed ( not includ
 .SH EXAMPLES
 Print an integer:
 .PP
-.B _printf("The answer is: \%d\n", 42);
+.B _printf("The answer is: \%d", 42);
 
 Print a string:
 .PP
-.B _printf("Hello, \%s!\n", "world");
+.B _printf("Hello, \%s!", "world");
 
 Print a character:
 .PP
-.B _printf("a character: \%c\n", "A");
+.B _printf("a character: \%c", "A");
 
 Print a percentage sign:
 .PP
-.B _printf("a percentage sign: \%%\n", "%");
+.B _printf("a percentage sign: \%%", "%");
 
 .SH SEE ALSO
 .BR _printf (3)
