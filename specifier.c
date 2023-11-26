@@ -11,28 +11,28 @@
  */
 int format_specifier(char *format, va_list arguments, int *count)
 {
-        char specifier = *format;
+	char specifier = *format;
 
-        if (specifier == 'c')
-        {
-                print_character(va_arg(arguments, int));
-                (*count)++;
-        }
-        else if (specifier == 's')
-        {
-                char *str = va_arg(arguments, char *);
+	if (format == 'c')
+	{
+		print_character(va_arg(arguments, int));
+		(*count)++;
+	}
+	else if (format == 's')
+	{
+		char *str = va_arg(arguments, char *);
 
-                print_string(str);
-                (*count) += _strlen(str);
-        }
-        else if (specifier == '%')
-        {
-                print_percent('%');
-                (*count)++;
-        }
-        else
-        {
-                (*count) += default_case(format);
-        }
-        return (0);
+		print_string(str);
+		(*count) += _strlen(str);
+	}
+	else if (format == '%')
+	{
+		print_percent('%');
+		(*count)++;
+	}
+	else
+	{
+		(*count) += default_case(format);
+	}
+	return (0);
 }
