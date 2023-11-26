@@ -5,7 +5,9 @@
 #include "main.h"
 
 /**
- *
+ * print_character - prints a char
+ * @arg: arguments received from printf
+ * Return: returns 1
  */
 int print_character(va_list arg)
 {
@@ -17,7 +19,9 @@ int print_character(va_list arg)
 	return (1);
 }
 /**
- *
+ * print_string - prints a string
+ * @arg:args received from printf
+ * Return: returns the len of the string
  */
 int print_string(va_list arg)
 {
@@ -37,10 +41,12 @@ int print_string(va_list arg)
 		len++;
 	}
 	write(STDOUT_FILENO, str, len);
-	return len;
+	return (len);
 }
 /**
- *
+ * print_percent - prints % sign
+ * @arg: args received from printf
+ * Return: returns 1
  */
 int print_percent(va_list arg)
 {
