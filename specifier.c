@@ -13,19 +13,20 @@ int format_specifier(char *format, va_list arguments, int *count)
 {
 	char specifier = *format;
 
-	if (format == 'c')
+	if (specifier == 'c')
 	{
 		print_character(va_arg(arguments, int));
 		(*count)++;
 	}
-	else if (format == 's')
+	else if (specifier == 's')
 	{
 		char *str = va_arg(arguments, char *);
-
+		if (str == NULL)
+			str = "(null)";
 		print_string(str);
-		(*count) += _strlen(str);
+		(*count) = _strlen(str + 1);
 	}
-	else if (format == '%')
+	else if (specifier == '%')
 	{
 		print_percent('%');
 		(*count)++;

@@ -65,6 +65,6 @@ void print_percent(char percent)
 int default_case(const char *format)
 {
 	write(STDOUT_FILENO, "%", 1);
-	write(STDOUT_FILENO, format, 1);
+	write(STDOUT_FILENO, &format, 1);
 	return (2);
 }
