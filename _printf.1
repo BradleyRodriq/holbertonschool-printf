@@ -33,6 +33,9 @@ Prints a percentage sign
 .SH RETURN VALUE
 The \fB_printf\fP function returns the number of characters printed ( not including null terminator).
 
+.SH ERRORS
+The \fB_printf\fP function returns -1 to indicate an error
+
 .SH EXAMPLES
 Print an integer:
 .PP
@@ -50,8 +53,14 @@ Print a percentage sign:
 .PP
 .B _printf("a percentage sign: \%%", "%");
 
+.SH NOTES
+This version of \fB_printf\fP represents a currently limited application of the standard printf function.
+
+.SH LIMITATIONS
+The \fB_printf\fP function does not currently support certain features and format specifiers that are otherwise supported int he standard printf function.
+
 .SH SEE ALSO
-.BR _printf (3)
+.BR printf (3)
 
 .SH AUTHOR
 Bradley Rodriguez bradley.rodriguez2@yahoo.com
