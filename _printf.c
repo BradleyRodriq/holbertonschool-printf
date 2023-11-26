@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
 #include "main.h"
@@ -18,13 +19,17 @@ int _printf(const char *format, ...)
 	};
 	va_start(args, format);
 	count = 0;
+	if (format == NULL)
+	{
+		return (-1);
+	}
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
 			if (*format == '\0')
-				break;
+				return (-1);
 			j = 0;
 			while (j < 3 && *format != (types[j].charType))
 				j++;
@@ -37,7 +42,7 @@ int _printf(const char *format, ...)
 			{
 				write(STDOUT_FILENO, "%", 1);
 				write(STDOUT_FILENO, format, 1);
-				count += 2;
+				count += 2;;
 			}
 		}
 		else
@@ -50,7 +55,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-
-
-
