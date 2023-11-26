@@ -18,13 +18,13 @@ int _printf(const char *format, ...)
 	};
 	va_start(args, format);
 	count = 0;
-	if (*format == '\0')
-		return (-1);
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
+			if (*format == '\0')
+				return (-1);
 			j = 0;
 			while (j < 3 && *format != *(types[j].charType))
 				j++;
@@ -46,5 +46,6 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
-	va_end(args); return (count);
+	va_end(args);
+	return (count);
 }
