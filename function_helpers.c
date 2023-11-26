@@ -5,7 +5,9 @@
 #include "main.h"
 
 /**
- *
+ * print_character - prints a char
+ * @arg: arguments received from printf
+ * Return; returns 1
  */
 int print_character(va_list arg)
 {
@@ -17,6 +19,8 @@ int print_character(va_list arg)
 	return (1);
 }
 /**
+ * print_string - prints a string
+ * @arg:
  *
  */
 int print_string(va_list arg)
