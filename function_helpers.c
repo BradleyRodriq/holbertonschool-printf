@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "main.h"
 /**
  * print_character - prints a char
