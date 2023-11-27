@@ -54,8 +54,13 @@ int print_percent(va_list arg)
 }
 /**
  * print_integers - prints integers
+<<<<<<< HEAD
  * @arg: arguments received from printf
  * Return: returns the times a number is printed
+=======
+ * @arg: argument received from printf
+ * Return: the amoutn of integers printed
+>>>>>>> 0c003f3c9b62f95264c31e000b8cde1ee9711870
  */
 
 int print_integers(va_list arg)
@@ -70,6 +75,11 @@ int print_integers(va_list arg)
 	i = 0;
 	count = 0;
 
+	if (num == INT_MIN)
+	{
+		write(STDOUT_FILENO, "-2147483648", 11);
+		return (11);
+	}
 	if (num < 0)
 	{
 		write(STDOUT_FILENO, "-", 1);
