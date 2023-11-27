@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # `_printf` Function
 
 This repository contains a simple implementation of the `_printf` function in C,
@@ -61,4 +60,3 @@ Copy and paste this content into a file named `README.md` in the
 root of your project directory. Adjust it as needed based on your project's specifics.
 =======
 # holbertonschool-printf
->>>>>>> 0c003f3c9b62f95264c31e000b8cde1ee9711870
