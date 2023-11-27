@@ -13,11 +13,12 @@ int default_case(const char *format);
 /**
  *struct printf - struct for printf
  * @print: function pointer
+ * @charType: specifier
 */
 
 typedef struct printf
 {
-char *charType
+char *charType;
 int (*print)(va_list arg);
 } printf_t;
 
