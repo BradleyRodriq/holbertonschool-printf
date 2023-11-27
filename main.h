@@ -10,6 +10,12 @@ int _printf(const char *format, ...);
 int print_integers(va_list arg);
 int default_case(const char *format);
 
+/**
+ *struct printf - struct for printf
+ *@charType: receives format from array
+ *print: function pointer to call functions depending on specifier
+*/
+
 typedef struct printf
 {
 char *charType;
