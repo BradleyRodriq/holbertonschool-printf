@@ -1,65 +1,90 @@
-.TH printf "November 26, 2023" "v1.0" "_PRINTF MANUAL"
+.TH _PRINTF 1 "November 26, 2023" "Version 1.0" "User Commands"
 
 .SH NAME
-_printf - format and print data
+_printf \- custom printf function
 
 .SH SYNOPSIS
+
+.br
 .B #include <stdio.h>
+
 .br
 .B #include <stdarg.h>
+
 .br
 .B #include <unistd.h>
+
 .br
 .B #include "main.h"
+
 .br
-.I int _printf(const char *format, ...);
+.B int _printf(const char *format, ...);
 
 .SH DESCRIPTION
-The
-.B _printf
-function formats and prints data according to the specified format.
-.P
-The format string can contain conversion specifiers that begin with '%'
-and are followed by a character that determines the type of conversion.
+The \fB_printf\fP function formats and prints data to the standard output according to the format string \fIformat\fP.
 
 .SH OPTIONS
+The \fB_printf\fP function supports the following format specifiers:
+
 .TP
-.B %c
-Prints a character.
+.B %d, %i
+Prints an integer.
+
 .TP
 .B %s
 Prints a string.
+
+.TP
+.B %c
+Prints a character.
+
 .TP
 .B %%
-Prints a percent sign.
-.TP
-.B %i, %d
-Prints integers.
+Prints a percentage sign
 
 .SH RETURN VALUE
-Returns the number of characters printed (excluding the null byte used to
-end output to strings). If an output error is encountered, the function returns -1.
+The \fB_printf\fP function returns the number of characters printed ( not including null terminator).
+
+.SH ERRORS
+The \fB_printf\fP function returns -1 to indicate an error
 
 .SH EXAMPLES
-The following examples demonstrate the usage of
-.B _printf:
 
-.B _printf("%c", 'A');
+Print an integer:
+.PP
+.B _printf("The answer is: %d", 42);
 
-.B _printf("%s", "Hello, World!");
+Print a string:
+.PP
+.B _printf("Hello, %s!", "world");
 
-.B _printf("%%");
+Print a character:
+.PP
+.B _printf("a character: %c", "A");
 
-.B _printf("%i", 5);
+Print a percentage sign:
+.PP
+.B _printf("a percentage sign: %%");
 
-.B _printf("%d", 42);
+.SH NOTES
+This version of \fB_printf\fP represents a currently limited application of the standard printf function.
+
+.SH LIMITATIONS
+The \fB_printf\fP function does not currently support certain features and format specifiers that are otherwise supported in the standard printf function.
+Special characters described in printf(1) are not recognized.
+
+.SH SEE ALSO
+.BR printf (3)
 
 .SH AUTHOR
-Written by Bradley Rodriguez & Leomar Rodriguez Gonzalez.
-
-.SH REPORTING BUGS
-Report any bugs or issues to bradley.rodriguez22@yahoo.com or leomarrg@gmail.com.
+Bradley Rodriguez bradley.rodriguez2@yahoo.com
+Leomar Rodriguez Leomarrg@gmail.com
 
 .SH COPYRIGHT
-Copyright (C) 2023 Bradley Rodriguez & Leomar Rodriguez Gonzalez.
-This is free software; see the source code for copying conditions.
+Copyright (c) 2023. All rights reserved.
+
+.SH BUGS
+Report bugs to bradley.rodriguez2@yahoo.com or leomarrg@gmail.com.
+
+.SH VERSION
+1.0
